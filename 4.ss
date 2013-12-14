@@ -14,6 +14,14 @@ Find the largest palindrome made from the product of two 3-digit numbers.
             (loop (add1 i) (sub1 j)))
           str1))))
 
+(define number-palindrome?
+	(lambda (n)
+		(let ([len (ceiling (log n 10))] [str (number->string n)])
+			(let loop ([i 0] [j (sub1 len)])
+				(if (< i (if (even? len) (/ len 2) (/ j 2)))
+					(if (equal? (string-ref str i) (string-ref str j))
+						#f)
+					#t)))))
 (define problem4
   (lambda ()
     (car (sort > (let iloop ([i 999])
