@@ -6,7 +6,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 |#
 
 (define problem1
-  (lambda ((sub1 n))
+  (lambda (n)
     (if (< n 1) 0
         (if (or (zero? (remainder n 3)) (zero? (remainder n 5)))
             (+ n (sum-multiples-3-5 (sub1 n)))
