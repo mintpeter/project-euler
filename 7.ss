@@ -26,9 +26,13 @@
 	(lambda ()
 		(let loop ([i 2] [j 3] [primes (list 2 1)])
 			(if (< i 10001)
-				(let loop1 ([primes1 primes])
-					(if (null? primes1) (loop (add1 i) (+ j 2) (cons j primes))
-						(if (zero? (remainder j (car primes1))) (loop1 (cdr primes1))
+				(let loop1 ([primes1 primes] [rt (sqrt j)])
+					(if (null? primes1)
+						(loop (add1 i) (+ j 2) (cons j primes))
+						(if (and
+								(< (car primes1) rt)
+								(zero? (remainder j (car primes1))))
+							(loop1 (cdr primes1) rt)
 							(loop i (+ j 2) primes))))
 				j))))
 
