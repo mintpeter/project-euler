@@ -6,7 +6,7 @@ Find the sum of all the primes below two million.
 
 (define problem10
 	(lambda ()
-		(let loop ([j 3] [primes (list 2)] [acc 0])
+		(let loop ([j 3] [primes (list 2)] [acc 2])
 			(if (< j 2000000)
 				(let loop1 ([primes1 primes] [rt (sqrt j)])
 					(if (null? primes1)
