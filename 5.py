@@ -6,15 +6,15 @@ import time
 
 def main():
 	rng = range(11, 21)
-	i = 9699690
+	i = 193993800
 	
 	while True:
+		j = i
 		for n in rng:
-			if (i % n) == 0:
-				if n == 20:
-					return i
-			else:
+			if i % n:
 				break
-		i += 19
+			elif n == 20:
+				return i
+		i += 20
 start_time = time.time()
 print main(), time.time() - start_time
