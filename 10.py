@@ -7,17 +7,18 @@ from math import sqrt
 
 def main():
     rng = range(2, 2000000)
-    for n in range:
+    for n in rng:
         rt = sqrt(n)
-        for m in range:
-            if m < rt:
+        for m in rng:
+            if m <= rt:
                 if n % m == 0:
                     rng.remove(n)
+                    break
             else:
                 break
     
     acc = 0
-    for n in range:
+    for n in rng:
         acc += n
     
     return acc
