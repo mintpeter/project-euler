@@ -33,7 +33,9 @@ def main():
                 if n % m == 0:
                     break
             else:
-                primes.append(m)
+                print n
+                primes.append(n)
+                break
     
     acc = 0
     
