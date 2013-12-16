@@ -22,6 +22,7 @@ def main():
         acc += n
     
     return acc
+
 start_time = time.time()
 
 print main(), time.time() - start_time
