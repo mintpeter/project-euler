@@ -4,7 +4,7 @@
 
 from math import sqrt
 
-def main()
+def main():
     primes = [2]
     i = 3
     j = 1
