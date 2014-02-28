@@ -1,5 +1,5 @@
 (define large-numbers
-    #("37107287533902102798797998220837590246510135740250"
+    '#("37107287533902102798797998220837590246510135740250"
       "46376937677490009712648124896970078050417018260538"
       "74324986199524741059474233309513058123726617309629"
       "91942213363574161572522430563301811072406154908250"
@@ -98,37 +98,50 @@
       "77158542502016545090413245809786882778948721859617"
       "72107838435069186155435662884062257473692284509516"
       "20849603980134001723930671666823555245252804609722"
-      "53503534226472524250874054075591789781264330331690")
+      "53503534226472524250874054075591789781264330331690"))
 
 (define empty-vector-100 (make-vector 100))
 
-(define fill-vector-100
-    (lambda (vec)
-        (let loop ([i 0])
-            (if (i < 100)
-                (begin
-                    (vector-set
-                        vec
-                        i
-                        (make-vector 50))
-                    (loop (add1 i)))))))
-
-(define filled-vov (fill-vector-100 empty-vector-100))
+;;(define empty-vov (vector-map (lambda (n) (make-vector 50)) empty-vector-100))
 
 ;; Fill the vectors with the numbers
-(define fill-vectors
-    (lambda (vec)
-        (let loop1 ([i 0])
-            (if (i < 100)
-                (let loop2 ([j 0])
-                    (if (j < 50)
-                        (begin
-                            (vector-set
-                                (vector-ref vec i)
-                                j
-                                (string-ref (vector-ref large-numbers i) j))
-                            (loop2 (add1 j)))
-                        (loop1 (add1 i))))
+;;(define fill-vov
+;;    (lambda (vec numvec)
+;;        (let loop1 ([i 0])
+;;            (if (< i 100)
+;;                (let loop2 ([j 0] [numstr (vector-ref numvec i)]
+;;                            [subvec (vector-ref vec i)])
+;;                    (if (< j 50)
+;;                        (begin
+;;                            (vector-set!
+;;                                subvec
+;;                                j
+;;                                (char->integer (string-ref numstr j)))
+;;                            (loop2 (add1 j) numstr subvec))
+;;                        (loop1 (add1 i))))
+;;                vec))))
+
+
+
+;;(define filled-vov (fill-vov empty-vov large-numbers))
+
+(define fill-vec
+    (lambda (vec numvec)
+        (let loop ([i 0])
+            (if (< i 100)
+                (begin
+                    (vector-set!
+                        vec
+                        i
+                        (string->number (vector-ref numvec i)))
+                    (loop (add1 i)))
                 vec))))
 
-(fill-vectors filled-vov)
+(define filled-vec (fill-vec empty-vector-100 large-numbers))
+
+(define problem13
+    (lambda ()
+        (let loop ([i 0])
+            (if (< i 100)
+                (+ (vector-ref filled-vec i) (loop (add1 i)))
+                0))))
