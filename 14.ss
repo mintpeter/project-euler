@@ -18,6 +18,7 @@
 ;; 
 ;; NOTE: Once the chain starts the terms are allowed to go above one million.
 
+;; takes ~40 seconds on Linode
 
 (define problem14
     (lambda ()
@@ -33,4 +34,6 @@
                         [(= (remainder j 2) 0) (loop2 (/ j 2) (cons j ls))]
                         [else (loop2 (+ (* 3 j) 1) (cons j ls))]))
                 topj))))
-                    
+
+(display (problem14))
+(newline)
