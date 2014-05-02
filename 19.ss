@@ -31,7 +31,7 @@
             (* m -1)
             m)))
 
-(trace-define (day-of-week y m d)
+(define (day-of-week y m d)
     (let ([m (get-m m)])
         (remainder
             (floor (+
@@ -42,9 +42,9 @@
             7)))
 
 (define (problem19)
-    (trace-let year ([y 1901])
+    (let year ([y 1901])
         (if (<= y 2000)
-            (trace-let month ([m 0])
+            (let month ([m 0])
                 (if (< m 12)
                     (if (zero? (day-of-week y m 1))
                         (add1 (month (add1 m)))
