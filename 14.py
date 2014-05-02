@@ -35,8 +35,8 @@ def main():
         l = collatz_length(i)
         if gtst < l:
             gtst = l
-        gtst = max(gtst, collatz_length(i))
-    return gtst
+            n = i
+    return n
 
 if __name__ == '__main__':
-    print(collatz_length(13))
+    print(main())
