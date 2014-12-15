@@ -19,7 +19,7 @@ def find_divisors(n, divisor_dict):
         elif i not in divisors and n % i == 0:
             divisors.add(i)
             divisors.add(n//i)
-
+    divisor_dict[n] = divisors
     return divisors
 
 def main():
