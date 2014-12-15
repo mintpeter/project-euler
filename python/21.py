@@ -9,16 +9,23 @@ and 110; therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and
 
 Evaluate the sum of all the amicable numbers under 10000."""
 
+import time
+
 def find_divisors(n, divisor_dict):
     divisors = {1}
 
     for i in range(n//2, 1, -1):
-        if i in divisor_dict:
-            divisors.add(i)
-            divisors | divisor_dict[i]
-        elif i not in divisors and n % i == 0:
+        if i not in divisors and n % i == 0:
             divisors.add(i)
             divisors.add(n//i)
+            if i in divisor_dict:
+                divisors | divisor_dict[i]
+        #elif i in divisor_dict and :
+        #    divisors.add(i)
+        #    divisors | divisor_dict[i]
+        #elif n % i == 0:
+        #    divisors.add(i)
+        #    divisors.add(n//i)
     divisor_dict[n] = divisors
     return divisors
 
@@ -28,7 +35,9 @@ def main():
 
     total = 0
     for i in range(2, 10000):
-        sum_divisors = sum(find_divisors(i, divisor_dict))
+        divisors = find_divisors(i, divisor_dict)
+        #divisor_dict[i] = divisors
+        sum_divisors = sum(divisors)
         sum_dict[i] = sum_divisors
         
         if sum_divisors in sum_dict\
@@ -40,4 +49,6 @@ def main():
     return total
 
 if __name__ == '__main__':
+    start_time = time.time()
     print(main())
+    print('time: {}'.format(time.time() - start_time))
