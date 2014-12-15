@@ -36,24 +36,30 @@ def is_abundant(n):
     divisors = find_divisors(n)
     return sum(divisors) > n
 
+def is_sum_abundants(n, abundants):
+    """Given a number and a list of abundant numbers, return True if the number
+    is the sum of two abundant numbers.
+    """
+    for abundant in abundants:
+        if abundant < n:
+            for other in abundants:
+                if other >= abundant and abundant + other == n:
+                    return True
+        else:
+            return False
+
 def main():
     abundants = [12]    
     
     answers = []
     
     for i in range(1, 28123):
-    #for i in range(1, 200):
         if i not in abundants and is_abundant(i):
-            abundants.insert(0, i)
+            abundants.append(i)
 
-        for abundant in abundants:
-            if abundant <= i:
-                for other in abundants:
-                    if other >= abundant\
-                            and abundant + other == i\
-                            and i not in answers:
-                        answers.append(i)
-
+        if is_sum_abundants(i, abundants):
+            answers.append(i)
+            
     return answers
 
 if __name__ == '__main__':
