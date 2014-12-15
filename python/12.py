@@ -36,7 +36,7 @@ mem = {1: 1}
 
 def tri_nums():
     i = 1
-    while 1:
+    while True:
         if i in mem:
             yield mem[i]
         else:
@@ -44,13 +44,15 @@ def tri_nums():
             yield mem[i]
         i += 1
 
-
 def main():
     divisor_dict = {1: {1}}
     i = 1
    
     for n in tri_nums():
-        if len(find_divisors(n, divisor_dict)) > 500:
+        divisors = find_divisors(n, divisor_dict)
+        divisor_dict[n] = divisors
+        if len(divisors) > 500:
+
             return n
 
 if __name__ == '__main__':
