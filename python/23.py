@@ -16,6 +16,7 @@ this limit.
 Find the sum of all the positive integers which cannot be written as the sum of
 two abundant numbers."""
 
+import time
 from math import ceil, sqrt
 
 divisor_dict = {1: {1}}
@@ -60,7 +61,9 @@ def main():
         if is_sum_abundants(i, abundants):
             answers.append(i)
             
-    return answers
+    return sum(answers)
 
 if __name__ == '__main__':
+    start = time.time()
     print(main())
+    print('time: {}'.format(time.time() - start))
