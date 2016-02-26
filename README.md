@@ -1,10 +1,26 @@
 project-euler
 =============
 
-Programs written to solve problems at projecteuler.net.
+Programs are written to solve problems at projecteuler.net.
 
-I will solve ten problems in Scheme, then I will solve the same ten problems in Python. The goal of this project is to improve efficiency in Scheme and to become more familiar with Python as a second language in which I have dabbled before.
+Aside from the fact that these problems are super fun to solve, I like to use
+Project Euler to get my feet wet with languages I've never used before. For
+example, I've never written Perl before, so I solved some problems in Perl 6.
+Listed below are the languages I want to play with sometime!
 
-All Scheme programs will run with the Petite Scheme interpretor found at http://www.scheme.com/download/.
-
-After solving 50 problems, I will attempt to solve the same 50 problems in a third language.
+* [Ada](https://www.adacore.com/adaanswers/about/ada)?
+* [Common Lisp](https://common-lisp.net/)
+* [D](http://dlang.org/)
+* [Erlang](https://www.erlang.org/)
+* [F#](http://fsharp.org/)
+* [Forth](https://www.gnu.org/software/gforth/)
+* [Fortran](https://gcc.gnu.org/fortran/)?
+* [Go](https://golang.org/)
+* [Haskell](https://www.haskell.org/)
+* [Lua](http://www.lua.org/)
+* [OCaml](http://ocaml.org/)
+* [Pascal](http://www.freepascal.org/)
+* ~~[Perl 6](http://perl6.org/)~~
+* [Prolog](http://www.gprolog.org/)
+* [Ruby](https://www.ruby-lang.org/en/)
+* [Smalltalk](http://squeak.org/)? (Squeak)
