@@ -21,12 +21,6 @@ def find_divisors(n, divisor_dict):
             divisors.add(n//i)
             if i in divisor_dict:
                 divisors | divisor_dict[i]
-        #elif i in divisor_dict and :
-        #    divisors.add(i)
-        #    divisors | divisor_dict[i]
-        #elif n % i == 0:
-        #    divisors.add(i)
-        #    divisors.add(n//i)
     divisor_dict[n] = divisors
     return divisors
 
