@@ -16,51 +16,48 @@ this limit.
 Find the sum of all the positive integers which cannot be written as the sum of
 two abundant numbers."""
 
+from collections import defaultdict
+import functools
+import itertools as it
+from math import ceil, floor, sqrt
 import time
-from math import ceil, sqrt
 
 divisor_dict = {1: {1}}
 
 def find_divisors(n):
-    divisors = {1}
+    if n in divisor_dict:
+        return divisor_dict[n]
 
+    divisors = {1}
     for i in range(ceil(sqrt(n)), 1, -1):
-        if i not in divisors and n % i == 0:
+        if n % i == 0 and i < n:
+            divisors |= find_divisors(i)
             divisors.add(i)
-            divisors.add(n//i)
-            if i in divisor_dict:
-                divisors | divisor_dict[i]
+            divisors.add(n // i)
     divisor_dict[n] = divisors
     return divisors
 
+@functools.lru_cache(maxsize=1024*4)
 def is_abundant(n):
     divisors = find_divisors(n)
-    return sum(divisors) > n
-
-def is_sum_abundants(n, abundants):
-    """Given a number and a list of abundant numbers, return True if the number
-    is the sum of two abundant numbers.
-    """
-    for abundant in abundants:
-        if abundant < n:
-            for other in abundants:
-                if other >= abundant and abundant + other == n:
-                    return True
-        else:
-            return False
+    abundant = sum(divisors) > n
+    if abundant:
+        print('{} is abundant. Its divisors are {}.'.format(n, divisors))
+        return True
+    else:
+        return False
 
 def main():
-    abundants = [12]    
-    
-    answers = []
-    
-    for i in range(1, 28123):
-        if i not in abundants and is_abundant(i):
-            abundants.append(i)
+    abundants = filter(is_abundant, range(1, 28124))
 
-        if is_sum_abundants(i, abundants):
-            answers.append(i)
-            
+    print('Computing sums.')
+    sums = map(sum, it.combinations_with_replacement(abundants, 2))
+    sums = set(filter(lambda x: x <= 28123, sums))
+    print('{} sums calculated between [{}, {}].'.format(len(sums), min(sums), max(sums)))
+    answers = set(range(1, 28124)) - sums
+    print('{} answers found.'.format(len(answers)))
+    print(answers)
+
     return sum(answers)
 
 if __name__ == '__main__':
