@@ -27,7 +27,7 @@
   0 1
   \ n-1 n sum i
   begin
-    2swap dup 40 < while
+    2swap dup 4000000 < while
       dup even? if
 	\ sum i n-1 n
 	2swap
